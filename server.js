@@ -4,9 +4,6 @@ const express = require('express');
 // App Setup
 const app = express();
 
-//Controllers
-require('./controllers/posts.js')(app);
-
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
@@ -29,14 +26,13 @@ require('./data/reddit-db');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-  // render the main view
-  res.render('home');
-})
 app.get('/posts/new', (req, res) => {
   // render the post view
   res.render('posts-new');
 })
+
+//Controllers
+require('./controllers/posts.js')(app);
 
 app.listen(3000, () => {
   console.log('Reddit clone on port localhost:3000!');
