@@ -37,3 +37,5 @@ require('./controllers/posts.js')(app);
 app.listen(3000, () => {
   console.log('Reddit clone on port localhost:3000!');
 });
+
+module.exports = app;
