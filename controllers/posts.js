@@ -28,17 +28,22 @@ app.get("/", (req, res) => {
       .catch(err => {
         console.log(err);
       });
+      // LOOK UP THE POST
+    Post.findById(req.params.id).populate('comments')
+      .then((post) => {
+        res.render('post-show.hbs', { post })
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   });
-
-app.get("/posts/:id", function(req, res) {
-    // LOOK UP THE POST
-    Post.findById(req.params.id)
-    .then(post => {
-      res.render("posts-show", { post });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-});
-
+  
+  app.get("/posts/:id", function(req, res) {
+// LOOK UP THE POST
+Post.findById(req.params.id).populate('comments').then((post) => {
+  res.render('posts-show', { post })
+}).catch((err) => {
+  console.log(err.message)
+})
+  });
 };
