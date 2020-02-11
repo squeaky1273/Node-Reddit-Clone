@@ -1,15 +1,24 @@
 // Require Libraries
 const express = require('express');
 
+require('dotenv').config();
+
 // App Setup
 const app = express();
 
+const jwt = require('jsonwebtoken');
+
+var app = express();
+
+
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+var cookieParser = require('cookie-parser');
 
 // Use Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser()); // Add this after you initialize express.
 
 // Add after body parser initialization!
 app.use(expressValidator());
@@ -34,6 +43,7 @@ app.get('/posts/new', (req, res) => {
 //Controllers
 require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/auth.js')(app);
 
 app.listen(3000, () => {
   console.log('Reddit clone on port localhost:3000!');
