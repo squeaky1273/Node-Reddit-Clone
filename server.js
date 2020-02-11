@@ -8,9 +8,6 @@ const app = express();
 
 const jwt = require('jsonwebtoken');
 
-var app = express();
-
-
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
