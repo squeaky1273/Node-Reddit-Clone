@@ -6,11 +6,11 @@ require('dotenv').config();
 // App Setup
 const app = express();
 
+var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-var cookieParser = require('cookie-parser');
 
 // Use Body Parser
 app.use(bodyParser.json());
