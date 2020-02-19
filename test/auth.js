@@ -2,6 +2,7 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../server");
 const should = chai.should();
+const agent = chai.request.agent(app);
 chai.use(chaiHttp);
 
 // Agent that will keep track of our cookies
