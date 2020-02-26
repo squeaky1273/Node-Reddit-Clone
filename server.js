@@ -47,6 +47,7 @@ app.use(expressValidator());
 
 // Add after express init
 app.use(checkAuth);
+app.use(express.static('public'));
 
 app.get('/posts/new', (req, res) => {
   // render the post view
@@ -57,6 +58,7 @@ app.get('/posts/new', (req, res) => {
 require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app);
+require('./controllers/replies.js')(app);
 
 app.listen(3000, () => {
   console.log('Reddit clone on port localhost:3000!');
